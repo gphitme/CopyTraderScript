@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="https://www.tradeo.com" />
+<title>test</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">test</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForPageToLoad</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>mouseOver</td>
+	<td>id=sign-in-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=user_login</td>
+	<td>gphitme@gmail.com</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=user_password</td>
+	<td>testPassw0rd</td>
+</tr>
+<tr>
+	<td>submitAndWait</td>
+	<td>id=sign-in-form</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[2]/div/div/button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.dropdown-body</td>
+	<td>Account Tradeo demo</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//*[@id='copying-popup']/div[2]/div[1]/div[8]/div[1]/div[1]/div/div[2]/ul/li[2]</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>
