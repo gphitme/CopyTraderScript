@@ -74,9 +74,9 @@ class closeTest(copyPopupTests):
         closeButton.click()
         self.assertFalse(self.is_element_present(By.ID,"copying-popup"))
         
-class copyData(copyPopupTests):
+class copyStandardData(copyPopupTests):
     def runTest(self):
-        print "Copy data test started..."
+        print "Copy standard data test started..."
         driver = self.driver
         copyUserName = driver.find_element_by_xpath("//h4[contains(@title,.)]").text
         dropDown = driver.find_element_by_xpath("//div[@class='dropdown-body']")
@@ -106,5 +106,5 @@ class copyData(copyPopupTests):
 if __name__ == "__main__":
     unittest.main()
 
-#copyDataTest = copyPopupTests('copyData')
+#copyDataTest = copyPopupTests('copyStandardData')
 #copyDataTest.run()
