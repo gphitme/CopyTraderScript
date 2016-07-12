@@ -245,7 +245,6 @@ class realDynamicTests(copyPopupTests):
                                                 "//div[@class='settings-form dynamic hidden']//div[@class='field position-size']//div[@class='error-content' and contains(.,'must be greater than 0') and not(contains(style,'display: none'))]"))
         self.assertTrue(self.is_element_present(By.XPATH,
                                                 "//div[@class = 'settings-form dynamic hidden']//div[@class='field max-position-size']//div[@class='error-content' and contains(.,'must be greater than 0') and not(contains(style,'display: none'))]"))
-
         maxField.clear()
         maxField.send_keys("1")
         preferredField.clear()
@@ -468,6 +467,52 @@ class demoOnRealTests(copyPopupTests):
         self.assertTrue(driver.find_element_by_xpath(
             "//div[@class='not-allowed-copying-text' and contains(.,'Copying between DEMO and REAL accounts is not possible.')]").is_displayed())
         self.assertFalse(driver.find_element_by_xpath("//input[@class='copying-button save']").is_displayed())
+
+
+class updateStopCopy(copyPopupTests):
+    def runTest(self):
+        print "Account update/stop copying test started..."
+        driver = self.driver
+        traderName = driver.find_element_by_xpath("//h4").text
+        dropDown = driver.find_element_by_xpath("//div[@class='dropdown-body']")
+        dropDown.click()
+        driver.find_element_by_xpath("//div[@class='dropdown-menu']//li[@class='']").click()
+        inputField = driver.find_element_by_xpath(
+            "//div[@class = 'settings-form standard hidden']//input[@name='copying[data][position_size]']")
+        copyButton = driver.find_element_by_xpath("//input[@class='copying-button save']")
+        inputField.clear()
+        inputField.send_keys("1")
+        time.sleep(1)
+        copyButton.click()
+        time.sleep(2)
+        followBlock = driver.find_element_by_xpath(
+            "//div[@class='copying-wrapper']//span[contains(.,'" + traderName + "')]/parent::a/parent::div")
+        followBlock.click()
+        time.sleep(1)
+        inputField = driver.find_element_by_xpath(
+            "//div[@class = 'settings-form standard hidden']//input[@name='copying[data][position_size]']")
+        copyButton = driver.find_element_by_xpath("//input[@class='copying-button save']")
+        inputField.clear()
+        inputField.send_keys("2")
+        time.sleep(1)
+        copyButton.click()
+        time.sleep(2)
+        followBlock = driver.find_element_by_xpath(
+            "//div[@class='copying-wrapper']//span[contains(.,'" + traderName + "')]/parent::a/parent::div")
+        followBlock.click()
+        time.sleep(1)
+        inputField = driver.find_element_by_xpath(
+            "//div[@class = 'settings-form standard hidden']//input[@name='copying[data][position_size]']")
+        # Check if value is updated
+        self.assertEqual(inputField.get_attribute("value"), "2")
+        stopButton = driver.find_element_by_xpath("//input[@class='copying-button stop']")
+        stopButton.click()
+        time.sleep(1)
+        driver.find_element_by_xpath("//button[@class='pretty-confirm-confirm']").click()
+        time.sleep(3)
+        # Check that we've stopped copying the trader
+        self.assertTrue(self.is_element_present(By.XPATH,
+                                                "//div[@class='copying-wrapper state-disabled']//span[contains(.,'" + traderName + "')]"))
 
 if __name__ == "__main__":
     unittest.main()
