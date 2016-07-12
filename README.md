@@ -1,5 +1,7 @@
 # CopyTraderScript
-TODO: Maby some code cleaning as there is alot of garbage left after the rewrite
+TODO: Tidy up a bit, as there is some redundant code here and there
 Improvements:
-  - Almost everything covered, but now the basic tests are done
+  - Added update tests
+
+PS: The code may be split to separate files but this would be too tedious as of now, so probably won't be done
 
